@@ -121,20 +121,23 @@ client.on('ready', function () { return __awaiter(void 0, void 0, void 0, functi
     });
 }); });
 client.on('message', function (msg) { return __awaiter(void 0, void 0, void 0, function () {
-    var x, old;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
+    var last, x, old;
+    var _a;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
             case 0:
                 if (!(msg.content.startsWith(process.env.PREFIX) && msg.author.bot === false)) return [3 /*break*/, 3];
+                last = (_a = msg.channel.lastMessage) === null || _a === void 0 ? void 0 : _a.author.bot;
+                if (!!last) return [3 /*break*/, 3];
                 msg.channel.startTyping();
                 return [4 /*yield*/, cleverbot(msg.content.slice(1, msg.content.length))];
             case 1:
-                x = _a.sent();
+                x = _b.sent();
                 return [4 /*yield*/, translate(_page, x)];
             case 2:
-                old = _a.sent();
+                old = _b.sent();
                 msg.channel.send("`" + old + "`");
-                _a.label = 3;
+                _b.label = 3;
             case 3: return [2 /*return*/];
         }
     });
