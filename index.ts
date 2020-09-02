@@ -3,9 +3,9 @@ import cleverbot from 'cleverbot-free'
 import puppeteer from 'puppeteer'
 
 import {config} from 'dotenv'
-const secrets = config({path: "./data/.env"}).parsed
+const secrets = config()
 const client = new Discord.Client()
-client.login(secrets.TOKEN)
+client.login(process.env.TOKEN)
 let browser, _page
 
 function sleep(milliseconds: number) {
@@ -41,7 +41,7 @@ client.on('ready', async() => {
     console.log('ready')
 })
 client.on('message', async (msg) => {
-    if(msg.content.startsWith(secrets.PREFIX) && msg.author.bot===false){
+    if(msg.content.startsWith(process.env.PREFIX) && msg.author.bot===false){
         msg.channel.startTyping()
         const x = await cleverbot(msg.content.slice(1, msg.content.length))
         const old = await translate(_page, x)

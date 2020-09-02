@@ -35,9 +35,9 @@ const Discord = __importStar(require("discord.js"));
 const cleverbot_free_1 = __importDefault(require("cleverbot-free"));
 const puppeteer_1 = __importDefault(require("puppeteer"));
 const dotenv_1 = require("dotenv");
-const secrets = dotenv_1.config({ path: "./data/.env" }).parsed;
+const secrets = dotenv_1.config();
 const client = new Discord.Client();
-client.login(secrets.TOKEN);
+client.login(process.env.TOKEN);
 let browser, _page;
 function sleep(milliseconds) {
     const date = Date.now();
@@ -71,7 +71,7 @@ client.on('ready', () => __awaiter(void 0, void 0, void 0, function* () {
     console.log('ready');
 }));
 client.on('message', (msg) => __awaiter(void 0, void 0, void 0, function* () {
-    if (msg.content.startsWith(secrets.PREFIX) && msg.author.bot === false) {
+    if (msg.content.startsWith(process.env.PREFIX) && msg.author.bot === false) {
         msg.channel.startTyping();
         const x = yield cleverbot_free_1.default(msg.content.slice(1, msg.content.length));
         const old = yield translate(_page, x);
