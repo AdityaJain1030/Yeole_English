@@ -1,0 +1,20 @@
+{
+  "name": "yeole_english",
+  "version": "1.0.0",
+  "description": "A Bot that does shakespearian english fights",
+  "main": "index.js",
+  "dependencies": {
+    "cleverbot-free": "^1.0.4",
+    "discord.js": "^12.3.1",
+    "dotenv": "^8.2.0",
+    "puppeteer": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/puppeteer": "^3.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "DeBigPotato#6414",
+  "license": "MIT"
+}
