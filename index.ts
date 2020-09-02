@@ -47,7 +47,7 @@ client.on('message', async (msg) => {
     if(msg.content.startsWith((process.env.PREFIX as string)) && msg.author.bot===false){
         const last = msg.channel.lastMessage?.author.bot
         if (!last){
-            msg.channel.startTyping()
+            // msg.channel.startTyping()
             const x = await cleverbot(msg.content.slice(1, msg.content.length))
             const old = await translate(_page, x)
             msg.channel.send(`\`${old}\``)

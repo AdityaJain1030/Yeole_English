@@ -129,7 +129,6 @@ client.on('message', function (msg) { return __awaiter(void 0, void 0, void 0, f
                 if (!(msg.content.startsWith(process.env.PREFIX) && msg.author.bot === false)) return [3 /*break*/, 3];
                 last = (_a = msg.channel.lastMessage) === null || _a === void 0 ? void 0 : _a.author.bot;
                 if (!!last) return [3 /*break*/, 3];
-                msg.channel.startTyping();
                 return [4 /*yield*/, cleverbot(msg.content.slice(1, msg.content.length))];
             case 1:
                 x = _b.sent();
