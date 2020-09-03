@@ -27,10 +27,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const Discord = __importStar(require("discord.js"));
-const cleverbot = __importStar(require("cleverbot-free"));
-const puppeteer = __importStar(require("puppeteer"));
+const cleverbot_free_1 = __importDefault(require("cleverbot-free"));
+const puppeteer_1 = __importDefault(require("puppeteer"));
 const dotenv_1 = require("dotenv");
 const secrets = dotenv_1.config();
 const client = new Discord.Client();
@@ -47,7 +50,7 @@ const endBrowser = (_browser) => __awaiter(void 0, void 0, void 0, function* () 
     yield _browser.close();
 });
 const startBrowser = () => __awaiter(void 0, void 0, void 0, function* () {
-    const b = yield puppeteer.launch({ args: [
+    const b = yield puppeteer_1.default.launch({ args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
         ] });
@@ -81,7 +84,7 @@ client.on('message', (msg) => __awaiter(void 0, void 0, void 0, function* () {
         }
         else if (!last) {
             // msg.channel.startTyping()
-            const x = yield cleverbot(msg.content.slice(1, msg.content.length));
+            const x = yield cleverbot_free_1.default(msg.content.slice(1, msg.content.length));
             const old = yield translate(_page, x);
             msg.channel.send(`\`${old}\``);
         }

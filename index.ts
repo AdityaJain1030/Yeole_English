@@ -1,6 +1,6 @@
 import * as Discord from 'discord.js'
-import * as cleverbot from 'cleverbot-free' 
-import * as puppeteer from 'puppeteer'
+import cleverbot from 'cleverbot-free' 
+import puppeteer from 'puppeteer'
 
 import {config} from 'dotenv'
 const secrets = config()
