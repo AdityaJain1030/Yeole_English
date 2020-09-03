@@ -46,6 +46,9 @@ client.on('ready', async() => {
 client.on('message', async (msg) => {
     if(msg.content.startsWith((process.env.PREFIX as string)) && msg.author.bot===false){
         const last = msg.channel.lastMessage?.author.bot
+        if(msg.content.slice(1, 9).toLowerCase() === "translate"){
+            msg.channel.send('no')
+        }
         if (!last){
             // msg.channel.startTyping()
             const x = await cleverbot(msg.content.slice(1, msg.content.length))
