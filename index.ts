@@ -59,3 +59,14 @@ client.on('message', async (msg) => {
         }
     }
 })
+client.on('guildMemberAdd', async(member)=>{
+    if(!member.user?.bot){
+        const role = member.guild.roles.cache.find(role => role.name === 'person')
+        try{
+            member.roles.add(role || '')
+        }
+        catch(err){
+            member.user?.send('Could Not Give Role. DM @DebigPotato6414 for more information')
+        }
+    }
+})
